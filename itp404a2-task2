@@ -1,0 +1,69 @@
+function Book(book) {
+
+  this.title=book.title;
+  this.quantity=book.quantity;
+  this.price=book.price;
+
+}
+
+
+Book.prototype.getSubtotal = function(){
+
+
+  var result = this.quantity * this.price;
+  return result;
+
+}
+
+var oojsBook = new Book({ title: 'Object Oriented JavaScript', quantity: 2, price: 10 });
+var book1 = new Book({ title: 'Object Oriented JavaScript', quantity: 1, price: 10 });
+var book2 = new Book({ title: 'JavaScript Web Applications', quantity: 2, price: 15 });
+var book3 = new Book({ title: 'PHP Object Oriented Solutions', quantity: 1, price: 20 });
+var book4 = new Book({ title: 'Head First Java', quantity: 5, price: 20 });
+
+
+console.log(oojsBook.title); // Object Oriented JavaScript
+console.log(oojsBook.quantity); // 2
+console.log(oojsBook.price); // 10
+console.log(oojsBook.getSubtotal());
+
+function ShoppingCart(items){
+
+this.items = items;
+
+}
+
+
+ShoppingCart.prototype.add = function(aBook) {
+
+this.items.push(aBook);
+
+};
+
+
+
+ShoppingCart.prototype.getTotal = function(){
+
+  var runningSum = 0;
+  for (i = 0; i < this.items.length; i++) {
+
+    console.log(this.items[i]);
+
+  runningSum = runningSum + this.items[i].getSubtotal();
+
+
+
+  }
+
+     return runningSum;
+
+
+};
+
+
+
+var cart = new ShoppingCart([book1, book2]);
+cart.add(book3);
+cart.add(book4);
+var subtotal = cart.getTotal();
+console.log(subtotal); // 160

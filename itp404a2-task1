@@ -1,0 +1,18 @@
+
+function Test(){}
+
+
+Test.prototype.plural = function (output) {
+	if (output.slice(-1) === 'y') {
+		return output.slice(0,-1) + 'ies';
+	}
+
+	else {
+		// anything else, just add s
+		return output + 's';
+	}
+}
+
+var string = new Test();
+
+console.log(string.plural('baby'));
